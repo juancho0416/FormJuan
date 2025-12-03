@@ -1,0 +1,57 @@
+@page
+@model form.Pages.ConsultaModel
+
+<h2>Consulta de formularios</h2>
+
+<form method="post">
+    <div class="mb-3">
+        <label>Correo:</label>
+        <input asp-for="CorreoBusqueda" class="form-control" />
+        <span asp-validation-for="CorreoBusqueda" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Buscar</button>
+    <a asp-page="Index" class="btn btn-secondary">Volver</a>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Mensaje))
+{
+    <div class="alert @Model.TipoAlerta mt-3">
+        @Model.Mensaje
+    </div>
+}
+
+@if (Model.Formularios.Count > 0)
+{
+    <h3>Resultados</h3>
+    <ul>
+        @foreach (var form in Model.Formularios)
+        {
+            <li>
+                @foreach (var kv in form)
+                {
+                    <p><strong>@kv.Key:</strong> @kv.Value</p>
+                }
+                <hr />
+            </li>
+        }
+    </ul>
+
+    <!-- Botón para enviar todos los formularios al correo -->
+    <form method="post" asp-page-handler="EnviarCorreo">
+        <input type="hidden" asp-for="CorreoBusqueda" />
+        <button type="submit" class="btn btn-secondary pull-left">Enviar al correo</button>
+    </form>
+
+    <form method="post">
+        <input type="hidden" asp-for="CorreoBusqueda" />
+        <button type="submit" asp-page-handler="ExportarPdf" class="btn btn-primary pull-right">
+            Exportar a PDF
+        </button>
+    </form>
+
+
+}
+
+
+
+<partial name="_ValidationScriptsPartial" />

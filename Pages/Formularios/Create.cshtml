@@ -1,0 +1,50 @@
+@page
+@model form.Pages.Formularios.CreateModel
+
+<h2>Nuevo Formulario</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label>Área</label>
+        <input asp-for="Formulario.Area" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Empresa</label>
+        <input asp-for="Formulario.Empresa" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>ISO</label>
+        <input asp-for="Formulario.ISO" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>NOM</label>
+        <input asp-for="Formulario.NOM" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Contrato</label>
+        <input asp-for="Formulario.Contrato" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Solicitud</label>
+        <input asp-for="Formulario.Solicitud" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Requerimiento</label>
+        <input asp-for="Formulario.Requerimiento" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Permiso</label>
+        <input asp-for="Formulario.Permiso" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Petición</label>
+        <input asp-for="Formulario.Peticion" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Correo</label>
+        <input asp-for="Formulario.Correo" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Guardar</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
+</form>

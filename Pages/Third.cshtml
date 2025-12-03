@@ -1,0 +1,49 @@
+@page
+@model form.Pages.ThirdModel
+@{
+    ViewData["Title"] = "Resumen";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/Index"><i class="icon icon-home"></i></a></li>
+    <li class="breadcrumb-item"><a href="/Index">Login</a></li>
+    <li class="breadcrumb-item"><a href="/ZeroSecond">Seleccion de fecha</a></li>
+    <li class="breadcrumb-item"><a href="/Second">Datos</a></li>
+    <li class="breadcrumb-item"><a href="/TwoFive">Permisos</a></li>
+    <li class="breadcrumb-item"><a href="/ZeroThird">Leyes</a></li>
+    <li class="breadcrumb-item"><a href="/TwoNine">Subir documentos</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="/Third">Resumen de seleccion</a></li>
+</ol>
+<h2>Resumen de selección</h2>
+
+<div class="card p-3 mb-3">
+    <div class="row">
+        <div class="col-md-6">
+
+            <p><strong>Nombre del titular:</strong>@Model.Nombre</p>
+            <p><strong>RFC:</strong>@Model.RFC</p>
+            <p><strong>Telefono:</strong>@Model.Telefono</p>
+            <p><strong>Fecha de tramite:</strong>@Model.Fecha</p>
+            <p><strong>Codigo Postal:</strong>@Model.CodigoPostal</p>
+            <p><strong>Estado:</strong>@Model.Estado</p>
+            <p><strong>Municipio:</strong>@Model.Municipio</p>
+            <p><strong>Area:</strong>@Model.Area</p>
+        </div>
+        <div class="col-md-6">
+            <p><strong>Empresa:</strong>@Model.Empresa</p>
+            <p><strong>ISO:</strong>@Model.ISO</p>
+            <p><strong>NOM:</strong>@Model.NOM</p>
+            <p><strong>Permiso:</strong>@Model.Permiso</p>
+            <p><strong>Regulacion:</strong>@Model.Regulacion</p>
+            <p><strong>Ley:</strong>@Model.Ley</p>
+            <p><strong>Articulo:</strong>@Model.Articulo</p>
+            <p><strong>Parrafo:</strong>@Model.Parrafo</p>
+            <p><strong>Archivo:</strong>@Model.Archivo</p>
+        </div>
+    </div>
+</div>
+<form method="post" asp-page-handler="Confirm">
+    <button type="submit" class="btn btn-primary">
+        Confirmar y finalizar
+    </button>
+    <a asp-page="/TwoNine" class="btn btn-secondary ms-2">Volver</a>
+</form>

@@ -1,0 +1,68 @@
+@page "{id:int}"
+@model form.Pages.EditarModel
+
+<h2>Editar Formulario</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="Formulario.Id" />
+
+    <div class="form-group">
+        <label asp-for="Formulario.Nombre"></label>
+        <input asp-for="Formulario.Nombre" class="form-control" />
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Formulario.RFC"></label>
+                <input asp-for="Formulario.RFC" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Formulario.CURP"></label>
+                <input asp-for="Formulario.CURP" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Formulario.Telefono"></label>
+                <input asp-for="Formulario.Telefono" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Formulario.Folio"></label>
+                <input asp-for="Formulario.Folio" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Formulario.CodigoPostal"></label>
+                <input asp-for="Formulario.CodigoPostal" class="form-control" />
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Formulario.Estado"></label>
+                <input asp-for="Formulario.Estado" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Formulario.Municipio"></label>
+                <input asp-for="Formulario.Municipio" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Formulario.Calle"></label>
+                <input asp-for="Formulario.Calle" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Formulario.Numero"></label>
+                <input asp-for="Formulario.Numero" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Formulario.RazonSocial"></label>
+                <input asp-for="Formulario.RazonSocial" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+    <a asp-page="/Historial" class="btn btn-secondary">Cancelar</a>
+</form>

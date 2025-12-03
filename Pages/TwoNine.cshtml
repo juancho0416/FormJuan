@@ -1,0 +1,69 @@
+@page
+@model form.Pages.TwoNineModel
+@{
+    ViewData["Title"] = "Formulario";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/Index"><i class="icon icon-home"></i></a></li>
+    <li class="breadcrumb-item"><a href="/Index">Login</a></li>
+    <li class="breadcrumb-item"><a href="/ZeroSecond">Seleccion de fecha</a></li>
+    <li class="breadcrumb-item"><a href="/Second">Datos</a></li>
+    <li class="breadcrumb-item"><a href="/TwoFive">Permisos</a></li>
+    <li class="breadcrumb-item"><a href="/ZeroThird">Leyes</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="/TwoNine">Subir Documento</a></li>
+</ol>
+<h2>Subir documento</h2>
+<a asp-page="/Logout" class="btn btn-danger">Cerrar sesión</a>
+
+<form method="post" enctype="multipart/form-data" asp-page-handler="Upload" id="uploadForm" novalidate>
+    <div class="mb-3">
+        <label for="archivo" class="form-label">Archivo (.json, .xml, .pdf)</label>
+        <input asp-for="Archivo" class="form-control" type="file" id="archivo" accept=".json,.xml,.pdf" />
+        <span asp-validation-for="Archivo" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Subir</button>
+    <a asp-page="/TwoFive" class="btn btn-secondary ms-2">Volver</a>
+
+</form>
+
+<!-- Modal notificación  subida -->
+<div class="modal fade" id="uploadModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Subida de archivo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <p>@(TempData["UploadMessage"] ?? "")</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        (function () {
+            // Serializa valores desde TempData de forma segura para JS
+            var showUpload = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(TempData["ShowUploadModal"] != null && (TempData["ShowUploadModal"] is bool b && b)));
+            if (showUpload) {
+                var uploadedFile = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(TempData["UploadedFile"] ?? ""));
+                var modalEl = document.getElementById('uploadModal');
+                if (!modalEl) return;
+                var bsModal = new bootstrap.Modal(modalEl);
+                bsModal.show();
+
+                modalEl.addEventListener('hidden.bs.modal', function () {
+                    if (uploadedFile && uploadedFile.length > 0) {
+                        var url = '@Url.Page("/Third")' + '?uploadedFile=' + encodeURIComponent(uploadedFile);
+                        window.location.href = url;
+                    }
+                }, { once: true });
+            }
+        })();
+    </script>
+}

@@ -1,0 +1,22 @@
+@page "{id:int}"
+@model form.Pages.Formularios.DetailsModel
+
+<h2>Detalle del Formulario</h2>
+
+<ul>
+    <li><strong>Área:</strong> @Model.Formulario.Area</li>
+    <li><strong>Empresa:</strong> @Model.Formulario.Empresa</li>
+    <li><strong>ISO:</strong> @Model.Formulario.ISO</li>
+    <li><strong>NOM:</strong> @Model.Formulario.NOM</li>
+    <li><strong>Contrato:</strong> @Model.Formulario.Contrato</li>
+    <li><strong>Solicitud:</strong> @Model.Formulario.Solicitud</li>
+    <li><strong>Requerimiento:</strong> @Model.Formulario.Requerimiento</li>
+    <li><strong>Permiso:</strong> @Model.Formulario.Permiso</li>
+    <li><strong>Petición:</strong> @Model.Formulario.Peticion</li>
+    <li><strong>Correo:</strong> @Model.Formulario.Correo</li>
+</ul>
+
+<p>
+    <a asp-page="Edit" asp-route-id="@Model.Formulario.Id" class="btn btn-warning">Editar</a>
+    <a asp-page="Index" class="btn btn-secondary">Volver</a>
+</p>

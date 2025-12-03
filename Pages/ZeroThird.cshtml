@@ -1,0 +1,96 @@
+@page
+@model form.Pages.ZeroThirdModel
+@{
+    ViewData["Title"] = "Formulario";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/Index"><i class="icon icon-home"></i></a></li>
+    <li class="breadcrumb-item"><a href="/Index">Login</a></li>
+    <li class="breadcrumb-item"><a href="/ZeroSecond">Seleccion de fecha</a></li>
+    <li class="breadcrumb-item"><a href="/Second">Datos</a></li>
+    <li class="breadcrumb-item"><a href="/TwoFive">Permisos</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="/ZeroThird">Leyes</a></li>
+</ol>
+<h1>Seccion de Leyes</h1>
+<hr class="red">
+</hr>
+
+<form method="post" novalidate>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mb-3">
+        <label asp-for="Input.Seccion" class="form-label">Area del tramite</label>
+        <select asp-for="Input.Seccion" class="form-select">
+            <option value="">--Seleccione el area de su tramite--</option>
+            <option value="Electricidad">Electricidad</option>
+            <option value="Gas">Gas</option>
+            <option value="Petroliferos">Petroliferos</option>
+            <option value="Hidrocarburos">Hidrocarburos</option>
+            <option value="Quimica">Quimica</option>
+        </select>
+        <span asp-validation-for="Input.Seccion" class="text-danger"></span>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label asp-for="Input.Regulacion" class="form-label">Regulacion</label>
+                <select asp-for="Input.Regulacion" class="form-select">
+                    <option value="">--Seleccione una Regulacion</option>
+                    <option value="Regulacion electrica">Regulacion electrica</option>
+                    <option value="Regulacion de gas">Regulacion de gas</option>
+                    <option value="Regulacion de petroleo">Regulacion de petroleo</option>
+                    <option value="Regulacion de hidrocarburos">Regulacion de hidrocarburos</option>
+                    <option value="Regulacion quimica">Regulacion quimica</option>
+                </select>
+                <span asp-validation-for="Input.Regulacion" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Input.Ley" class="form-label">Ley</label>
+                <select asp-for="Input.Ley" class="form-select">
+                    <option value="">--Seleccione una ley--</option>
+                    <option value="Ley energia 25-ENG-05">Ley energia 25-ENG-05</option>
+                    <option value="Ley gas 25-GS-06">Ley gas 25-GS-06</option>
+                    <option value="Ley petroleo 25-PTRL-05">Ley petroleo 25-PTRL-05</option>
+                    <option value="Ley hidrocarburos 25-HIC-03">Ley hidrocarburos 25-HIC-03</option>
+                    <option value="Ley quimica 25-QM-02">Ley quimica 25-QM-02</option>
+                </select>
+                <span asp-validation-for="Input.Ley" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label asp-for="Input.Articulo" class="form-label">Articulo</label>
+                <select asp-for="Input.Articulo" class="form-select">
+                    <option value="">--Selecciona un Articulo--</option>
+                    <option value="Articulo XV">Articulo XV</option>
+                    <option value="Articulo XX">Articulo XX</option>
+                    <option value="Articulo XVII">Articulo XVII</option>
+                    <option value="Articulo IX">Articulo IX</option>
+                    <option value="Articulo X">Articulo X</option>
+                </select>
+                <span asp-validation-for="Input.Articulo" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Input.Parrafo" class="form-label"></label>
+                <select asp-for="Input.Parrafo" class="form-select">
+                    <option value="">--Selecciona un parrafo--</option>
+                    <option value="Parrafo 14">Parrafo 14</option>
+                    <option value="Parrafo 5">Parrafo 5</option>
+                    <option value="Parrafo 3">Parrafo 3</option>
+                    <option value="Parrafo 8">Parrafo 8</option>
+                    <option value="Parrafo 7">Parrafo 7</option>
+                </select>
+                <span asp-validation-for="Input.Parrafo" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary pull-right">Enviar</button>
+    <a asp-page="/Second" class="btn btn-secondary ms-2">Volver</a>
+
+</form>
+<partial name="_ValidationScriptsPartial" />
+
+@* Scripts *@
+
+<script src="/wwwroot/js/site.js"></script>

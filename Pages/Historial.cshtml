@@ -1,0 +1,47 @@
+@page
+@model form.Pages.HistorialModel
+
+<h2>Historial de Formularios</h2>
+
+@if (Model.Formularios.Count == 0)
+{
+    <p>No tienes formularios enviados aún.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Nombre</th>
+                <th>RFC</th>
+                <th>CURP</th>
+                <th>Folio</th>
+                <th>Teléfono</th>
+                <th>Codigo Postal</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var f in Model.Formularios)
+            {
+                <tr>
+                    <td>@f.Fecha</td>
+                    <td>@f.Nombre</td>
+                    <td>@f.RFC</td>
+                    <td>@f.CURP</td>
+                    <td>@f.Folio</td>
+                    <td>@f.Telefono</td>
+                    <td>@f.CodigoPostal</td>
+                    <td>
+                        <a asp-page="/Detalle" asp-route-id="@f.Id" class="btn btn-info btn-sm">Ver más</a>
+                        <a asp-page="/Editar" asp-route-id="@f.Id" class="btn btn-warning btn-sm">Editar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<div>
+    <a asp-page="/Index" class="btn btn-danger">Volver</a>
+</div>

@@ -1,0 +1,53 @@
+@page
+@model form.Pages.Formularios.IndexModel
+
+<h2>Lista de Formularios</h2>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">Nuevo Formulario</a>
+</p>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Área</th>
+            <th>Empresa</th>
+            <th>ISO</th>
+            <th>NOM</th>
+            <th>Contrato</th>
+            <th>Solicitud</th>
+            <th>Requerimiento</th>
+            <th>Permiso</th>
+            <th>Petición</th>
+            <th>Correo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+        @foreach (var f in Model.Formularios)
+        {
+            <tr>
+                <td>@f.Id</td>
+                <td>@f.Area</td>
+                <td>@f.Empresa</td>
+                <td>@f.ISO</td>
+                <td>@f.NOM</td>
+                <td>@f.Contrato</td>
+                <td>@f.Solicitud</td>
+                <td>@f.Requerimiento</td>
+                <td>@f.Permiso</td>
+                <td>@f.Peticion</td>
+                <td>@f.Correo</td>
+                <td>
+                    <a asp-page="Edit" asp-route-id="@f.Id" class="btn btn-warning btn-sm">Editar</a>
+                    <a asp-page="Delete" asp-route-id="@f.Id" class="btn btn-danger btn-sm">Eliminar</a>
+                    <a asp-page="Details" asp-route-id="@f.Id" class="btn btn-info btn-sm">Ver</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

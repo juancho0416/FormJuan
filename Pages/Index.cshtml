@@ -1,0 +1,197 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<h1>Inicio</h1>
+<hr class="red" />
+
+<style>
+    .bs-glyphicons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 70vh;
+    }
+
+    .bs-glyphicons-list {
+
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        flex-wrap: wrap;
+    }
+
+    .bs-glyphicons-list li {
+        text-align: center;
+        position: relative;
+        color: #611232;
+    }
+
+    .icon-link {
+        color: inherit;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.25rem;
+        transition: transform 0.15s;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 6px;
+    }
+
+    .icon-link:hover {
+        transform: translateY(-3px) scale(1.03);
+        text-decoration: none;
+        color: inherit;
+
+    }
+
+    .gobmxfont {
+        font-size: 3rem;
+
+    }
+
+    .glyphicon-class {
+        color: inherit;
+        font-size: 2.25rem;
+    }
+
+    /* Dropdown styles */
+    .dropdown-toggle::after {
+
+        content: "▾";
+        margin-left: 6px;
+        font-size: 0.8rem;
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 50%;
+        transform: translateX(-50%);
+        background: #ffffff;
+        border: 1px solid #9d2449;
+        border-radius: 6px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        padding: 6px 0;
+        min-width: 180px;
+        z-index: 2000;
+    }
+
+    .dropdown-menu a {
+        display: block;
+        padding: 8px 14px;
+        color: #222;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    .dropdown-menu a:hover {
+        background: #f2f2f2;
+    }
+
+    .dropdown.open .dropdown-menu {
+        display: block;
+    }
+
+    /* Responsive tweak */
+    @@media (max-width: 640px) {
+        .bs-glyphicons-list {
+            gap: 2rem;
+        }
+
+        .gobmxfont {
+            font-size: 2.4rem;
+        }
+    }
+</style>
+
+<div class="bs-glyphicons">
+    <ul class="bs-glyphicons-list">
+        <li>
+            <a class="icon-link" asp-page="/Registro" title="Login">
+                <span class="gobmxfont icon-user" aria-hidden="true"></span>
+                <span class="glyphicon-class">Registrarse</span>
+            </a>
+        </li>
+
+        <li>
+            <a class="icon-link" asp-page="/login" title="Trámite">
+                <span class="gobmxfont icon-tramite" aria-hidden="true"></span>
+                <span class="glyphicon-class">Trámite</span>
+            </a>
+        </li>
+        <li>
+            <a class="icon-link" asp-page="/Consulta" title="Trámite">
+                <span class="gobmxfont icon-search" aria-hidden="true"></span>
+                <span class="glyphicon-class">Consulta tramite</span>
+            </a>
+        </li>
+        <li>
+            <a class="icon-link" asp-page="/Auditoria/Index" title="Auditoria">
+                <span class="gobmxfont icon-search" aria-hidden="true"></span>
+                <span class="glyphicon-class">Consultar auditoria</span>
+            </a>
+        </li>
+        <li>
+            <a class="icon-link" asp-page="/Historial" title="Historial">
+                <span class="gobmxfont bi bi-envelope" aria-hidden="true"></span>
+                <span class="glyphicon-class">Historial de envios</span>
+            </a>
+
+        </li>
+
+        <li class="dropdown" id="formDropdown">
+            <a class="icon-link dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class="gobmxfont bi bi-clipboard" aria-hidden="true"></span>
+                <span class="glyphicon-class">Formulario</span>
+            </a>
+            <div class="dropdown-menu" role="menu" aria-label="Tipos de formularios">
+                <!-- redirige a TwoNine indicando tipo -->
+                <a asp-page="/TwoFive" asp-route-tipo="tipo1">Tipo 1 - Permisos</a>
+                <a asp-page="/ZeroThird" asp-route-tipo="tipo2">Tipo 2 - Leyes</a>
+                <a asp-page="/TwoNine" asp-route-tipo="tipo3">Tipo 3 - Cargar archivo</a>
+            </div>
+        </li>
+    </ul>
+</div>
+
+
+
+<script>
+    (function () {
+        const dropdown = document.getElementById('formDropdown');
+        if (!dropdown) return;
+        const toggle = dropdown.querySelector('.dropdown-toggle');
+
+        // abrir/cerrar al hacer click
+        toggle.addEventListener('click', function (e) {
+            e.preventDefault();
+            dropdown.classList.toggle('open');
+            const expanded = dropdown.classList.contains('open');
+            toggle.setAttribute('aria-expanded', expanded);
+        });
+
+        // cerrar al hacer click fuera
+        document.addEventListener('click', function (e) {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('open');
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // cerrar al navegar (links usan asp-page, navegación normal)
+        dropdown.querySelectorAll('.dropdown-menu a').forEach(a => {
+            a.addEventListener('click', () => {
+                dropdown.classList.remove('open');
+            });
+        });
+    })();
+</script>

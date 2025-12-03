@@ -1,0 +1,153 @@
+@page
+@model form.Pages.TwoFiveModel
+@{
+    ViewData["Title"] = "Permisos";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/Index"><i class="icon icon-home"></i></a></li>
+    <li class="breadcrumb-item"><a href="/Index">Login</a></li>
+    <li class="breadcrumb-item"><a href="/ZeroSecond">Seleccion de fecha</a></li>
+    <li class="breadcrumb-item"><a href="/Second">Datos</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="/TwoFive">Permisos</a></li>
+</ol>
+<h1>Formulario</h1>
+<hr class="red">
+</hr>
+<a asp-page="/Logout" class="btn btn-danger">Cerrar sesión</a>
+
+<form method="post" novalidate>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Input.Area" class="form-label">Area</label>
+        <select asp-for="Input.Area" class="form-select">
+            <option value="">--Seleccione un area</option>
+            <option value="Petroliferos">Petroliferos</option>
+            <option value="Electricidad">Electricidad</option>
+            <option value="Gas Licuado">Gas Licuado</option>
+            <option value="Gas Natural">Gas Natural</option>
+            <option value="Hidrocarburos">Hidrocarburos</option>
+        </select>
+        <span asp-validation-for="Input.Area" class="text-danger"></span>
+        <hr>
+        </hr>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="mb-3">
+                <label asp-for="Input.Empresa" class="form-label">Empresa</label>
+                <select asp-for="Input.Empresa" class="form-select">
+                    <option value="">--Selecciona una opcion--</option>
+                    <option value="Pemex">Pemex</option>
+                    <option value="CFE">CFE</option>
+                    <option value="Privada 1">Privada 1</option>
+                    <option value="Privada 2">Privada 2</option>
+                    <option value="Privada 3">Privada 3</option>
+                </select>
+                <span asp-validation-for="Input.Empresa" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Input.ISO" class="form-label"></label>
+                <select asp-for="Input.ISO" class="form-select">
+                    <option value="">--Selecciona una ISO</option>
+                    <option value="ISO-90001">ISO-90001</option>
+                    <option value="ISO-90002">ISO-90002</option>
+                    <option value="ISO-90003">ISO-90003</option>
+                    <option value="ISO-90004">ISO-90004</option>
+                    <option value="ISO-90005">ISO-90005</option>
+                </select>
+                <span asp-validation-for="Input.ISO" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Input.NOM" class="form-label"></label>
+                <select asp-for="Input.NOM" class="form-select">
+                    <option value="">--Seleccione una NOM</option>
+                    <option value="NOM-2390-013">NOM-2390-013</option>
+                    <option value="NOM-3452-093">NOM-3452-093</option>
+                    <option value="NOM-3466-666">NOM-3466-666</option>
+                    <option value="NOM-8903-123">NOM-8903-123</option>
+                    <option value="NOM-7890-234">NOM-7890-234</option>
+                </select>
+                <span asp-validation-for="Input.NOM" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+
+                <label asp-for="Input.Permiso" class="form-label"></label>
+                <select asp-for="Input.Permiso" class="form-select">
+                    <option value="">--Selecciona una opcion--</option>
+                    <option value="CNE-P1234-333">CNE-P1234-333</option>
+                    <option value="CNE-12344-999">CNE-12344-999</option>
+                    <option value="CNE-23399-666">CNE-23399-666</option>
+                    <option value="CNE-36779-927">CNE-36779-927</option>
+                    <option value="CNE-92776-983">CNE-92776-983</option>
+                </select>
+                <span asp-validation-for="Input.Permiso" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+
+            <div class="mb-3">
+                <label asp-for="Input.Contrato" class="form-label"></label>
+                <select asp-for="Input.Contrato" class="form-select">
+                    <option value="">--Selecciona un contrato</option>
+                    <option value="CNE-8905-2345">CNE-8905-2345</option>
+                    <option value="CNE-2839-2929">CNE-2839-2929</option>
+                    <option value="CNE-2929-2929">CNE-2929-2929</option>
+                    <option value="CNE-2929-2202">CNE-2929-2202</option>
+                    <option value="CNE-2812-1234">CNE-2812-1234</option>
+                </select>
+                <span asp-validation-for="Input.Contrato" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Input.Solicitud" class="form-label">Solicitud</label>
+                <select asp-for="Input.Solicitud" class="form-select">
+                    <option value="">--Selecciona una solicitud</option>
+                    <option value="Solicitud 156CNE">Solicitud 156CNE</option>
+                    <option value="Solicitud 287CNE">Solicitud 287CNE</option>
+                    <option value="Solicitud 395CNE">Solicitud 345CNE</option>
+                    <option value="Solicitud 389CNE">Solicitud 389CNE</option>
+                    <option value="Solicitud 345CNE">Solicitud 345CNE</option>
+                </select>
+                <span asp-validation-for="Input.Solicitud" class="text-danger"></span>
+
+            </div>
+            <div class="mb-3">
+                <label asp-for="Input.Requerimiento" class="form-label"></label>
+                <select asp-for="Input.Requerimiento" class="form-select">
+                    <option value="">--Selecciona un requerimiento</option>
+                    <option value="Requerimiento 1">Requerimiento 1</option>
+                    <option value="Requerimiento 2">Requerimiento 2</option>
+                    <option value="Requerimiento 3">Requerimiento 3</option>
+                    <option value="Requerimiento 4">Requerimiento 4</option>
+                    <option value="Requerimiento 5">Requerimiento 5</option>
+                </select>
+                <span asp-validation-for="Input.Requerimiento" class="text-danger"></span>
+                <div class="mb-3">
+                    <label asp-for="Input.Peticion" class="form-label"></label>
+                    <select asp-for="Input.Peticion" class="form-select">
+                        <option value="">--Seleccione una opcion--</option>
+                        <option value="Peticion 299737">Peticion 299737</option>
+                        <option value="Peticion 334578">Peticion 334578</option>
+                        <option value="Peticion 383763">Peticion 383763</option>
+                        <option value="Peticion 837633">Peticion 837633</option>
+                        <option value="Peticion 235753">Peticion 235753</option>
+                    </select>
+                    <span asp-for="Input.Peticion" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary pull-right">Enviar</button>
+    <a asp-page="/Second" class="btn btn-secondary ms-2">Volver</a>
+
+</form>
+<partial name="_ValidationScriptsPartial" />
+
+@* Scripts *@
+
+<script src="/wwwroot/js/site.js"></script>

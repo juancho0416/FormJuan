@@ -1,0 +1,28 @@
+@page
+@model form.Pages.Auditoria.IndexModel
+
+<h2>Historial de Auditoría</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Usuario</th>
+            <th>Acción</th>
+            <th>Entidad</th>
+            <th>EntidadId</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var registro in Model.Registros)
+        {
+            <tr>
+                <td>@registro.Usuario</td>
+                <td>@registro.Accion</td>
+                <td>@registro.Entidad</td>
+                <td>@registro.EntidadId</td>
+                <td>@registro.Fecha</td>
+            </tr>
+        }
+    </tbody>
+</table>
