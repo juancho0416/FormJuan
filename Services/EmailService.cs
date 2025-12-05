@@ -1,3 +1,5 @@
+
+
 using System.Text;
 using System.Text.Json;
 
@@ -101,129 +103,6 @@ public class EmailService
     Console.WriteLine("API KEY USADA: " + apiKey);
 
   }
-  /// <summary>
-  /// Envía un correo con los datos del formulario TwoFive
-  /// </summary>
-  public async Task EnviarFormularioTwoFive(
-      string area,
-      string empresa,
-      string iso,
-      string nom,
-      string contrato,
-      string solicitud,
-      string requerimiento,
-      string permiso,
-      string peticion,
-      string correoDestino
-  )
-  {
-    // Obtener API Key de Resend desde appsettings.json
-    string apiKey = _config["Resend:ApiKey"];
-
-    using var http = new HttpClient();
-    http.DefaultRequestHeaders.Add("Authorization", $"Bearer {apiKey}");
-
-    // Construir el contenido del correo
-    var data = new
-    {
-      from = "onboarding@resend.dev", // remitente configurado en Resend
-      to = new[] { correoDestino },   // destinatario: el usuario logueado
-      subject = "Actualización de tu formulario",
-      html = $@"
-                <h2>Tu formulario ha sido actualizado</h2>
-                <p><strong>Área:</strong> {area}</p>
-                <p><strong>Empresa:</strong> {empresa}</p>
-                <p><strong>ISO:</strong> {iso}</p>
-                <p><strong>NOM:</strong> {nom}</p>
-                <p><strong>Contrato:</strong> {contrato}</p>
-                <p><strong>Solicitud:</strong> {solicitud}</p>
-                <p><strong>Requerimiento:</strong> {requerimiento}</p>
-                <p><strong>Permiso:</strong> {permiso}</p>
-                <p><strong>Petición:</strong> {peticion}</p>
-                <p>Fecha de actualización: {DateTime.Now}</p>
-            "
-    };
-
-    //  Serializar y enviar a Resend
-    var json = JsonSerializer.Serialize(data);
-    var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-    var response = await http.PostAsync("https://api.resend.com/emails", content);
-
-    if (!response.IsSuccessStatusCode)
-    {
-      throw new Exception($"Error al enviar correo: {response.StatusCode}");
-    }
-  }
-
-
-
-
-  public async Task EnviarFormularioSecond(
-      string nombre,
-      string rfc,
-      string curp,
-      string folio,
-      string telefono,
-      string calle,
-      string numero,
-      string numero2,
-      string cp,
-      string estado,
-      string municipio,
-      string razonSocial,
-      string correoDestino
-  )
-  {
-    string apiKey = _config["Resend:ApiKey"];
-
-    using var http = new HttpClient();
-    http.DefaultRequestHeaders.Add("Authorization", $"Bearer {apiKey}");
-
-    var data = new
-    {
-      from = "onboarding@resend.dev",
-      to = new[] { correoDestino },
-      subject = "Nuevo formulario registrado",
-      html = $@"
-                <h2>Se ha registrado un nuevo formulario</h2>
-                <p><strong>Nombre:</strong> {nombre}</p>
-                <p><strong>RFC:</strong> {rfc}</p>
-                <p><strong>CURP:</strong> {curp}</p>
-                <p><strong>Folio:</strong> {folio}</p>
-                <p><strong>Teléfono:</strong> {telefono}</p>
-                <p><strong>Calle:</strong> {calle}</p>
-                <p><strong>Número:</strong> {numero}</p>
-                <p><strong>Número 2:</strong> {numero2}</p>
-                <p><strong>Código Postal:</strong> {cp}</p>
-                <p><strong>Estado:</strong> {estado}</p>
-                <p><strong>Municipio:</strong> {municipio}</p>
-                <p><strong>Razón Social:</strong> {razonSocial}</p>
-                <p>Fecha de registro: {DateTime.Now}</p>
-            "
-    };
-
-    var json = JsonSerializer.Serialize(data);
-    var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-    try
-    {
-      var response = await http.PostAsync("https://api.resend.com/emails", content);
-
-      // ✅ Esto lanza excepción si la respuesta no es exitosa
-      response.EnsureSuccessStatusCode();
-
-      Console.WriteLine("Correo enviado correctamente");
-    }
-    catch (Exception ex)
-    {
-      // ⚠️ No bloqueamos el flujo, solo registramos el error
-      Console.WriteLine("Error enviando correo: " + ex.Message);
-    }
-  }
-
-
-
   public async Task EnviarCorreoGenerico(string correoDestino, string asunto, string htmlContenido)
   {
     string apiKey = _config["Resend:ApiKey"];
@@ -284,5 +163,21 @@ public class EmailService
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

@@ -28,7 +28,9 @@ namespace form.Pages
 
             var command = connection.CreateCommand();
             command.CommandText = @"SELECT Id, Correo, Nombre, RFC, CURP, Folio, Telefono, Calle, Numero,
-                                           CodigoPostal, Estado, Municipio, RazonSocial, Fecha
+                                           CodigoPostal, Estado, Municipio, RazonSocial, Fecha, Area,
+                                            Empresa, ISO, NOM, Contrato, Requerimiento, Permiso, Peticion,
+                                            Regulacion, Ley, Articulo, Parrafo
                                     FROM Formularios
                                     WHERE Id = $id";
             command.Parameters.AddWithValue("$id", id);
@@ -51,7 +53,19 @@ namespace form.Pages
                     Estado = reader.GetString(10),
                     Municipio = reader.GetString(11),
                     RazonSocial = reader.GetString(12),
-                    Fecha = reader.GetString(13)
+                    Fecha = reader.GetString(13),
+                    Area = reader.GetString(14),
+                    Empresa = reader.GetString(15),
+                    ISO = reader.GetString(16),
+                    NOM = reader.GetString(17),
+                    Contrato = reader.GetString(18),
+                    Requerimiento = reader.GetString(19),
+                    Permiso = reader.GetString(20),
+                    Peticion = reader.GetString(21),
+                    Regulacion = reader.GetString(22),
+                    Ley = reader.GetString(23),
+                    Articulo = reader.GetString(24),
+                    Parrafo = reader.GetString(25)
                 };
             }
         }
@@ -72,6 +86,18 @@ namespace form.Pages
             public string Municipio { get; set; }
             public string RazonSocial { get; set; }
             public string Fecha { get; set; }
+            public string Area { get; set; }
+            public string Empresa { get; set; }
+            public string ISO { get; set; }
+            public string NOM { get; set; }
+            public string Contrato { get; set; }
+            public string Requerimiento { get; set; }
+            public string Permiso { get; set; }
+            public string Peticion { get; set; }
+            public string Regulacion { get; set; }
+            public string Ley { get; set; }
+            public string Articulo { get; set; }
+            public string Parrafo { get; set; }
         }
 
 

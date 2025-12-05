@@ -2,27 +2,40 @@
 @model form.Pages.Auditoria.IndexModel
 
 <h2>Historial de Auditoría</h2>
+@if (HttpContext.Session.GetString("rol") == "Administrador")
+{
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Usuario</th>
-            <th>Acción</th>
-            <th>Entidad</th>
-            <th>EntidadId</th>
-            <th>Fecha</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var registro in Model.Registros)
-        {
+
+    <table class="table table-striped">
+        <thead>
             <tr>
-                <td>@registro.Usuario</td>
-                <td>@registro.Accion</td>
-                <td>@registro.Entidad</td>
-                <td>@registro.EntidadId</td>
-                <td>@registro.Fecha</td>
+                <th>Usuario</th>
+                <th>Acción</th>
+                <th>Entidad</th>
+                <th>EntidadId</th>
+                <th>Fecha</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var registro in Model.Registros)
+            {
+                <tr>
+                    <td>@registro.Usuario</td>
+                    <td>@registro.Accion</td>
+                    <td>@registro.Entidad</td>
+                    <td>@registro.EntidadId</td>
+                    <td>@registro.Fecha</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-danger">
+        No tienes permisos para acceder a esta pagina.
+    </div>
+}
+<div>
+    <a asp-page="/Index" class="btn btn-danger">Volver</a>
+</div>

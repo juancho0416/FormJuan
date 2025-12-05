@@ -13,7 +13,12 @@ namespace form.Pages.Auditoria
         public List<AuditoriaModel> Registros { get; set; } = new();
 
         public void OnGet()
+
         {
+            if (HttpContext.Session.GetString("rol") != "Administrador")
+            {
+                return;
+            }
             using var connection = new SqliteConnection("Data Source=usuarios.db");
             connection.Open();
 

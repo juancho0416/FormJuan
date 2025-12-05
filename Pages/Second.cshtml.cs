@@ -116,7 +116,6 @@ public class SecondModel : PageModel
         command.Parameters.AddWithValue("$fecha", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
         command.ExecuteNonQuery();
-
         //  Redirigir a la siguiente página
         return RedirectToPage("/TwoFive");
     }

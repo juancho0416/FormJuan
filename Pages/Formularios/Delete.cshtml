@@ -3,9 +3,16 @@
 
 <h2>Eliminar Formulario</h2>
 
-<p>¿Estás seguro de que deseas eliminar este formulario?</p>
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger">@Model.ErrorMessage</div>
+}
 
-<form method="get">
+<p>¿Estás seguro de que deseas eliminar este formulario (ID: @Model.Id)?</p>
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+
     <button type="submit" class="btn btn-danger">Eliminar</button>
     <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
 </form>

@@ -7,11 +7,15 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
+using form.Services;
+using form.Models;
 
 namespace form.Pages;
 
 public class ThirdModel : PageModel
 {
+    [BindProperty]
+    public FormularioRecord Formulario { get; set; } = new();
     private readonly EmailService _emailService;
     private readonly IWebHostEnvironment _env;
 
@@ -40,7 +44,7 @@ public class ThirdModel : PageModel
     public string? Requerimiento { get; set; }
     public string? Permiso { get; set; }
     public string? Peticion { get; set; }
-    //Tercera parte formuylario(TwoNineFive)
+    //Tercera parte formulario(TwoNineFive)
 
     public string? Regulacion { get; set; }
     public string? Ley { get; set; }
@@ -133,9 +137,9 @@ public class ThirdModel : PageModel
         }
 
         using var connection = new SqliteConnection("Data Source=usuarios.db");
-        connection.Open(); // ¡No olvides abrir la conexión!
+        connection.Open();
 
-        // Traer los datos del formulario más reciente de ese usuario
+        // Traer el formulario más reciente del usuario
         var getDataCmd = connection.CreateCommand();
         getDataCmd.CommandText = @"
         SELECT Id, Nombre, Empresa, RFC, Fecha
@@ -159,23 +163,35 @@ public class ThirdModel : PageModel
         string rfc = reader.GetString(3);
         string fecha = reader.GetString(4);
 
-        // contenido del correo
-        string correoDestino = correo;
-        string asunto = "Formulario enviado correctamente ";
+        //cerrar reader antes de auditoria
+        reader.Close();
+        //cerrar conexion antess de auditoria
+        connection.Close();
+
+        //Auditoria
+        var auditoria = new AuditoriaService();
+        var usuario = HttpContext.Session.GetString("correo") ?? "anonimo";
+        auditoria.Registrar(usuario, "Crear", "Formulario", formularioId);
+
+        //  Enviar correo
+        string asunto = "Formulario enviado correctamente";
         string htmlContenido = $@"
-        
         <h2>Formulario enviado</h2>
         <p>Hola {nombre},</p>
         <p>Tu formulario se ha recibido con éxito el día {fecha}.</p>
         <p>Empresa: {empresa}</p>
         <p>RFC: {rfc}</p>
-        
     ";
-        await _emailService.EnviarCorreoGenerico(correoDestino, asunto, htmlContenido);
+
+        await _emailService.EnviarCorreoGenerico(correo, asunto, htmlContenido);
+
+
         return RedirectToPage("/Fourth");
     }
+
     public IActionResult OnPost()
     {
+
         //primera parte del formulario
         Nombre = TempData["Nombre"]?.ToString();
         RFC = TempData["RFC"]?.ToString();
@@ -197,7 +213,6 @@ public class ThirdModel : PageModel
         Ley = TempData["Ley"]?.ToString();
         Articulo = TempData["Articulo"]?.ToString();
         Parrafo = TempData["Parrafo"]?.ToString();
-
 
 
 

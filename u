@@ -20,5 +20,5 @@ core.bare=false
 core.logallrefupdates=true
 core.symlinks=false
 core.ignorecase=true
-remote.origin.url=https://github.com/juancho0416/miform
+remote.origin.url=https://github.com/juancho0416/FormJuan.git
 remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*

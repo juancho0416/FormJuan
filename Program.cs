@@ -1,4 +1,6 @@
 
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Servicios necesarios
@@ -6,6 +8,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddHttpClient();
 builder.Services.AddSingleton<EmailService>();
 builder.Services.AddScoped<EmailService>();
+
 
 
 // Registrar SignalR
@@ -42,7 +45,6 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.Run();
-
 
 
 

@@ -38,7 +38,6 @@ namespace form.Pages
                     Telefono = reader.GetString(5),
                     Fecha = reader.GetString(6),
                     CodigoPostal = reader.GetString(7)
-
                 });
             }
         }

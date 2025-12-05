@@ -1,0 +1,47 @@
+@page
+@model form.Pages.AdminPanelModel
+
+<h2>Panel de Administración</h2>
+
+@if (HttpContext.Session.GetString("rol") == "Administrador")
+{
+    <p>Bienvenido, administrador @HttpContext.Session.GetString("correo")</p>
+
+    <h3>Gestión de Usuarios</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Correo</th>
+                <th>Rol</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var u in Model.Usuarios)
+            {
+                <tr>
+                    <td>@u.Nombre</td>
+                    <td>@u.Apellido</td>
+                    <td>@u.Correo</td>
+                    <td>@u.Rol</td>
+                    <td>
+                        <a asp-page="/EditarUsuario" asp-route-id="@u.Id" class="btn btn-warning btn-sm">Editar</a>
+                        <a asp-page="/EliminarUsuario" asp-route-id="@u.Id" class="btn btn-danger btn-sm">Eliminar</a>
+                        <a asp-page="/DetalleUsuario" asp-route-id="@u.Id" class="btn btn-info btn-sm">Ver detalle</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-danger">
+        No tienes permisos para acceder a esta página.
+    </div>
+}
+<div>
+    <a asp-page="/Index" class="btn btn-danger">Volver</a>
+</div>

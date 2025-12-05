@@ -46,7 +46,7 @@ namespace form.Pages.Formularios
             // si necesitas int:
             int insertedId = (int)lastInsertId;
 
-            // Auditoría
+
             // Auditoría
             var auditoria = new AuditoriaService();
             var usuario = User.Identity.IsAuthenticated ? User.Identity.Name : "anonimo";

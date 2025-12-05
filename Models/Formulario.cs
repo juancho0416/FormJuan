@@ -13,5 +13,7 @@ namespace form.Models
         public string Permiso { get; set; } = string.Empty;
         public string Peticion { get; set; } = string.Empty;
         public string Correo { get; set; } = string.Empty;
+
     }
+
 }

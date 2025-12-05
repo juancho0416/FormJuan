@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.Sqlite;
-
+using form.Models;
+using form.Services;
 namespace form.Pages
 {
     public class EditarModel : PageModel
@@ -64,7 +65,6 @@ namespace form.Pages
                     RazonSocial = $razon
                 WHERE Id = $id;
             ";
-
             command.Parameters.AddWithValue("$id", Formulario.Id);
             command.Parameters.AddWithValue("$nombre", Formulario.Nombre ?? "");
             command.Parameters.AddWithValue("$rfc", Formulario.RFC ?? "");
@@ -79,6 +79,11 @@ namespace form.Pages
             command.Parameters.AddWithValue("$razon", Formulario.RazonSocial ?? "");
 
             command.ExecuteNonQuery();
+
+            // Auditoría con fecha
+            var auditoria = new AuditoriaService();
+            var usuario = HttpContext.Session.GetString("correo") ?? "anonimo";
+            auditoria.Registrar(usuario, "ACTUALIZAR", "Formulario", Formulario.Id, Formulario.Fecha);
 
             TempData["Mensaje"] = "Formulario actualizado correctamente.";
             return RedirectToPage("/Historial");
@@ -103,3 +108,8 @@ namespace form.Pages
         public string Fecha { get; set; }
     }
 }
+
+
+
+
+

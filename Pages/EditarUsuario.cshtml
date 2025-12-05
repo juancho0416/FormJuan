@@ -1,0 +1,35 @@
+@page "{id:int}"
+@model form.Pages.EditarUsuarioModel
+
+<h2>Editar Usuario</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="Usuario.Id" />
+
+    <div class="form-group">
+        <label asp-for="Usuario.Nombre"></label>
+        <input asp-for="Usuario.Nombre" class="form-control" readonly />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Usuario.Apellido"></label>
+        <input asp-for="Usuario.Apellido" class="form-control" readonly />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Usuario.Correo"></label>
+        <input asp-for="Usuario.Correo" class="form-control" readonly />
+    </div>
+
+    <div class="form-group">
+        <label>Rol</label>
+        <select asp-for="Usuario.Rol" class="form-control">
+            <option value="Usuario">Usuario</option>
+            <option value="Administrador">Administrador</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+    <a asp-page="/AdminPanel" class="btn btn-secondary">Cancelar</a>
+</form>
+@* <a asp-page="Details" asp-route-id="@f.Id" class="btn btn-info btn-sm">Ver</a> *@

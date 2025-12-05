@@ -1,0 +1,58 @@
+@page "{id:int}"
+@model form.Pages.DetalleUsuarioModel
+
+<h2>Detalle de Usuario</h2>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <h4>@Model.Usuario.Nombre @Model.Usuario.Apellido</h4>
+        <p><strong>Correo:</strong> @Model.Usuario.Correo</p>
+        <p><strong>Rol:</strong> @Model.Usuario.Rol</p>
+    </div>
+</div>
+
+<h3> Formularios del usuario</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Folio</th>
+            <th>Razón Social</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var f in Model.Formularios)
+        {
+            <tr>
+                <td>@f.Id</td>
+                <td>@f.RazonSocial</td>
+                <td>@f.Fecha</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3> Acciones registradas (Auditoría)</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Acción</th>
+            <th>Entidad</th>
+            <th>EntidadId</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var a in Model.Acciones)
+        {
+            <tr>
+                <td>@a.Accion</td>
+                <td>@a.Entidad</td>
+                <td>@a.EntidadId</td>
+                <td>@a.Fecha</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-page="/AdminPanel" class="btn btn-secondary">Volver</a>

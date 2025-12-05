@@ -357,6 +357,7 @@ C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva c
 C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\form.dll
 C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\form.pdb
 C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\BouncyCastle.Cryptography.dll
+C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\Enums.NET.dll
 C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\itext.barcodes.dll
 C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\itext.bouncy-castle-connector.dll
 C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\itext.forms.dll
@@ -370,6 +371,7 @@ C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva c
 C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\itext.svg.dll
 C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\itext.bouncy-castle-adapter.dll
 C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\itext.commons.dll
+C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\jose-jwt.dll
 C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\MailKit.dll
 C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\Microsoft.Data.Sqlite.dll
 C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\Microsoft.DotNet.PlatformAbstractions.dll
@@ -380,7 +382,12 @@ C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva c
 C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\SQLitePCLRaw.batteries_v2.dll
 C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\SQLitePCLRaw.core.dll
 C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\SQLitePCLRaw.provider.e_sqlite3.dll
+C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\StandardSocketsHttpHandler.dll
 C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\System.Net.WebSockets.WebSocketProtocol.dll
+C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\TestableIO.System.IO.Abstractions.dll
+C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\TestableIO.System.IO.Abstractions.Wrappers.dll
+C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\Testably.Abstractions.FileSystem.Interface.dll
+C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\Vonage.dll
 C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\runtimes\browser-wasm\nativeassets\net9.0\e_sqlite3.a
 C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\runtimes\linux-arm\native\libe_sqlite3.so
 C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\runtimes\linux-arm64\native\libe_sqlite3.so
@@ -483,6 +490,8 @@ C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva c
 C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\obj\Debug\net9.0\compressed\7gjekgersz-87fc7y1x7t.gz
 C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\obj\Debug\net9.0\compressed\rm95f3dd37-jfsiqqwiad.gz
 C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\obj\Debug\net9.0\compressed\dcoeg896jo-znd40m68pu.gz
+C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\obj\Debug\net9.0\compressed\3v0tkqn2w1-gcazcydns5.gz
+C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\obj\Debug\net9.0\compressed\w2ffwzvibq-cgrjlxvxgy.gz
 C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\obj\Debug\net9.0\compressed\o1xksbmo2a-fit6ism5io.gz
 C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\obj\Debug\net9.0\compressed\pr76w8lp1u-fit6ism5io.gz
 C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\obj\Debug\net9.0\staticwebassets.build.json
@@ -495,12 +504,3 @@ C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva c
 C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\obj\Debug\net9.0\form.pdb
 C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\obj\Debug\net9.0\form.genruntimeconfig.cache
 C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\obj\Debug\net9.0\ref\form.dll
-C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\Enums.NET.dll
-C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\jose-jwt.dll
-C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\StandardSocketsHttpHandler.dll
-C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\TestableIO.System.IO.Abstractions.dll
-C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\TestableIO.System.IO.Abstractions.Wrappers.dll
-C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\Testably.Abstractions.FileSystem.Interface.dll
-C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\bin\Debug\net9.0\Vonage.dll
-C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\obj\Debug\net9.0\compressed\3v0tkqn2w1-gcazcydns5.gz
-C:\Users\jmartinezg\OneDrive - Comisión Nacional de Energía\Escritorio\Nueva carpeta\FormJuan\obj\Debug\net9.0\compressed\w2ffwzvibq-cgrjlxvxgy.gz

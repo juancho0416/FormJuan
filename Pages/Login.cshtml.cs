@@ -18,16 +18,14 @@ public class LoginModel : PageModel
 
     public IActionResult OnPost()
     {
-        // Normalizar correo
         string correoNormalizado = Input.Email.Trim().ToLower();
 
         using var connection = new SqliteConnection("Data Source=usuarios.db");
         connection.Open();
 
-        // 1. Verificar si el correo existe
         var command = connection.CreateCommand();
         command.CommandText = @"
-        SELECT Contrasena, Confirmado
+        SELECT Contrasena, Confirmado, Rol
         FROM Usuarios
         WHERE Correo = $correo;
     ";
@@ -43,15 +41,14 @@ public class LoginModel : PageModel
 
         string storedHash = reader.GetString(0);
         int confirmado = reader.GetInt32(1);
+        string rol = reader.GetString(2);
 
-        //  2. Verificar si el correo está confirmado
         if (confirmado == 0)
         {
             ErrorMessage = "Debes confirmar tu correo antes de iniciar sesión.";
             return Page();
         }
 
-        //  3. Verificar contraseña
         string enteredHash = HashPassword(Input.Password);
 
         if (storedHash != enteredHash)
@@ -60,15 +57,20 @@ public class LoginModel : PageModel
             return Page();
         }
 
-        //  4. Guardar correo en sesión SOLO si todo es correcto
+        // Guardar en sesión
         HttpContext.Session.SetString("correo", correoNormalizado);
+        HttpContext.Session.SetString("rol", rol);
 
-
-        //  5. Redirigir al usuario
-        return RedirectToPage("Menu");
+        // Redirigir según rol
+        if (rol == "Administrador")
+        {
+            return RedirectToPage("AdminPanel");
+        }
+        else
+        {
+            return RedirectToPage("Menu");
+        }
     }
-
-
 
     private string HashPassword(string password)
     {
