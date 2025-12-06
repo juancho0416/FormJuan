@@ -74,6 +74,7 @@ namespace form.Pages
         public string Apellido { get; set; } = "";
         public string Correo { get; set; } = "";
         public string Rol { get; set; } = "";
+
     }
 
     public class AuditoriaRecord

@@ -1,0 +1,25 @@
+@page
+@model form.Pages.OlvideModel
+@{
+    ViewData["Title"] = "Olvidé mi contraseña";
+}
+
+<h1>Olvidé mi contraseña</h1>
+
+<form method="post" class="mt-3">
+    <div class="mb-3">
+        <label for="correo" class="form-label">Correo</label>
+        <input asp-for="Correo" id="correo" class="form-control" type="email" required />
+        <span asp-validation-for="Correo" class="text-danger"></span>
+    </div>
+    <button class="btn btn-primary" type="submit">Enviar enlace</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Mensaje))
+{
+    <div class="alert alert-info mt-3">@Model.Mensaje</div>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

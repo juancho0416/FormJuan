@@ -1,15 +1,28 @@
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.Sqlite;
 using form.Models;
+using form.Services;
+using System;
 
 namespace form.Pages
 {
     public class EditarUsuarioModel : PageModel
     {
+        private readonly AuditoriaService _auditoria;
+
+        public EditarUsuarioModel(AuditoriaService auditoria)
+        {
+            _auditoria = auditoria;
+        }
+
         [BindProperty]
         public UsuarioRecord Usuario { get; set; } = new();
-        public List<UsuarioRecord> Usuarios { get; set; } = new();
+
+        [TempData]
+        public string? Mensaje { get; set; }
+
         public void OnGet(int id)
         {
             using var connection = new SqliteConnection("Data Source=usuarios.db");
@@ -31,6 +44,10 @@ namespace form.Pages
                     Rol = reader.GetString(4)
                 };
             }
+            else
+            {
+                Mensaje = "Usuario no encontrado.";
+            }
         }
 
         public IActionResult OnPost()
@@ -38,19 +55,71 @@ namespace form.Pages
             using var connection = new SqliteConnection("Data Source=usuarios.db");
             connection.Open();
 
-            var command = connection.CreateCommand();
-            command.CommandText = "UPDATE Usuarios SET Rol = $rol WHERE Id = $id";
-            command.Parameters.AddWithValue("$rol", Usuario.Rol);
-            command.Parameters.AddWithValue("$id", Usuario.Id);
+            // Leer rol y correo actuales desde BD
+            string rolActual, correoActual;
+            var getCmd = connection.CreateCommand();
+            getCmd.CommandText = "SELECT Rol, Correo FROM Usuarios WHERE Id = $id";
+            getCmd.Parameters.AddWithValue("$id", Usuario.Id);
 
-            command.ExecuteNonQuery();
+            using (var reader = getCmd.ExecuteReader())
+            {
+                if (!reader.Read())
+                {
+                    Mensaje = "Usuario no encontrado.";
+                    return RedirectToPage("/AdminPanel");
+                }
+                rolActual = reader.GetString(0);
+                correoActual = reader.GetString(1);
+            }
 
-            TempData["Mensaje"] = "Rol actualizado correctamente.";
+            var correoSesion = HttpContext.Session.GetString("correo") ?? string.Empty;
+            var esMismoUsuario = string.Equals(correoSesion, correoActual, StringComparison.OrdinalIgnoreCase);
+            var esAdminActual = string.Equals(rolActual, "Administrador", StringComparison.OrdinalIgnoreCase);
+            var nuevoEsAdmin = string.Equals(Usuario.Rol, "Administrador", StringComparison.OrdinalIgnoreCase);
+
+            // Regla: no auto-degradarse
+            if (esMismoUsuario && esAdminActual && !nuevoEsAdmin)
+            {
+                Mensaje = "No puedes quitarte a ti mismo el rol de Administrador.";
+                return RedirectToPage("/AdminPanel");
+            }
+
+            // Regla: no dejar el sistema sin administradores
+            if (esAdminActual && !nuevoEsAdmin)
+            {
+                var countCmd = connection.CreateCommand();
+                countCmd.CommandText = @"
+                    SELECT COUNT(*) FROM Usuarios
+                    WHERE Rol = 'Administrador' AND Id <> $id;
+                ";
+                countCmd.Parameters.AddWithValue("$id", Usuario.Id);
+
+                var restantes = Convert.ToInt32(countCmd.ExecuteScalar());
+                if (restantes <= 0)
+                {
+                    Mensaje = "Debe existir al menos un Administrador en el sistema.";
+                    return RedirectToPage("/AdminPanel");
+                }
+            }
+
+            // Actualizar rol
+            var updateCmd = connection.CreateCommand();
+            updateCmd.CommandText = "UPDATE Usuarios SET Rol = $rol WHERE Id = $id";
+            updateCmd.Parameters.AddWithValue("$rol", Usuario.Rol);
+            updateCmd.Parameters.AddWithValue("$id", Usuario.Id);
+
+            var rows = updateCmd.ExecuteNonQuery();
+
+            // Auditoría: cambio de rol
+            var adminCorreo = HttpContext.Session.GetString("correo") ?? "admin";
+            try
+            {
+                _auditoria.Registrar(adminCorreo, "ACTUALIZAR_ROL", "Usuario", Usuario.Id);
+            }
+            catch { /* no bloquear por auditoría */ }
+
+            Mensaje = rows > 0 ? "Rol actualizado correctamente." : "No se pudo actualizar el rol.";
             return RedirectToPage("/AdminPanel");
         }
-
-
-
-
     }
 }

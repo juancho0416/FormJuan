@@ -183,8 +183,11 @@ public class ThirdModel : PageModel
         <p>RFC: {rfc}</p>
     ";
 
-        await _emailService.EnviarCorreoGenerico(correo, asunto, htmlContenido);
+        //si comento el await _emailService no hay error y si lo deejo hay 
+        //error aunque funciona bien pero se traba al dar en confirmar y
+        //  solo funciona con varios clicks 
 
+        // await _emailService.EnviarCorreoGenerico(correo, asunto, htmlContenido);
 
         return RedirectToPage("/Fourth");
     }

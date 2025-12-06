@@ -1,3 +1,4 @@
+
 using Microsoft.Data.Sqlite;
 using System;
 
@@ -5,8 +6,11 @@ namespace form.Services
 {
     public class AuditoriaService
     {
-        private readonly string _connectionString = "Data Source=usuarios.db";
-
+        private readonly string _connectionString;
+        public AuditoriaService(string connectionString = "Data Source=usuarios.db")
+        {
+            _connectionString = connectionString;
+        }
         // Sobrecarga: con fecha
         public void Registrar(string usuario, string accion, string entidad, int entidadId, string? fecha = null)
         {
