@@ -27,6 +27,9 @@
                 <td>@f.Id</td>
                 <td>@f.RazonSocial</td>
                 <td>@f.Fecha</td>
+                <td>
+                    <a asp-page="/Formularios/Details" asp-route-id="@f.Id" class="btn btn-info btn-sm">Ver</a>
+                </td>
             </tr>
         }
     </tbody>
