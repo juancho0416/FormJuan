@@ -1,6 +1,26 @@
 @page
 @model form.Pages.Formularios.IndexModel
 
+@using form.Services
+@inject NotificacionService NotifSvc
+@{
+    var correo = HttpContext.Session.GetString("correo");
+    var notifCount = (!string.IsNullOrWhiteSpace(correo))
+    ? NotifSvc.ContarNoLeidas(correo)
+    : 0;
+    <a class="icon-link position-relative" asp-page="/Notificaciones/Index" title="Notificaciones"
+        aria-label="Notificaciones">
+        <span class="gobmxfont bi bi-bell" aria-hidden="true"></span>
+        @if (notifCount > 0)
+        {
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                @notifCount
+                <span class="visually-hidden">notificaciones sin leer</span>
+            </span>
+        }
+    </a>
+}
+
 <h2>Lista de Formularios</h2>
 @if (Model.Formularios.Count == 0)
 {
@@ -14,8 +34,6 @@ else
     <p>
         <a asp-page="Create" class="btn btn-primary">Nuevo Formulario</a>
     </p>
-
-
     <table class="table table-striped">
         <thead>
             <tr>

@@ -1,68 +1,95 @@
 @page "{id:int}"
-@model form.Pages.EditarModel
+@model form.Pages.Formularios.EditarModel
+@{
+    ViewData["Title"] = "Editar formulario (aprobación requerida)";
+}
 
-<h2>Editar Formulario</h2>
+<h2>Editar formulario</h2>
 
 <form method="post">
     <input type="hidden" asp-for="Formulario.Id" />
 
-    <div class="form-group">
-        <label asp-for="Formulario.Nombre"></label>
-        <input asp-for="Formulario.Nombre" class="form-control" />
-    </div>
     <div class="row">
         <div class="col-md-6">
-            <div class="form-group">
-                <label asp-for="Formulario.RFC"></label>
-                <input asp-for="Formulario.RFC" class="form-control" />
-            </div>
+            <div class="mb-2"><label class="form-label">Correo</label><input asp-for="Formulario.Correo"
+                    class="form-control" /></div>
 
-            <div class="form-group">
-                <label asp-for="Formulario.CURP"></label>
-                <input asp-for="Formulario.CURP" class="form-control" />
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Formulario.Telefono"></label>
-                <input asp-for="Formulario.Telefono" class="form-control" />
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Formulario.Folio"></label>
-                <input asp-for="Formulario.Folio" class="form-control" />
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Formulario.CodigoPostal"></label>
-                <input asp-for="Formulario.CodigoPostal" class="form-control" />
-            </div>
+            <div class="mb-2"><label class="form-label">Nombre</label><input asp-for="Formulario.Nombre"
+                    class="form-control" /></div>
+            <div class="mb-2"><label class="form-label">RFC</label><input asp-for="Formulario.RFC"
+                    class="form-control" /></div>
+            <div class="mb-2"><label class="form-label">CURP</label><input asp-for="Formulario.CURP"
+                    class="form-control" /></div>
+            <div class="mb-2"><label class="form-label">Folio</label><input asp-for="Formulario.Folio"
+                    class="form-control" /></div>
+            <div class="mb-2"><label class="form-label">Teléfono</label><input asp-for="Formulario.Telefono"
+                    class="form-control" /></div>
+            <div class="mb-2"><label class="form-label">Calle</label><input asp-for="Formulario.Calle"
+                    class="form-control" /></div>
+            <div class="mb-2"><label class="form-label">Número</label><input asp-for="Formulario.Numero"
+                    class="form-control" /></div>
+            <div class="mb-2"><label class="form-label">Código Postal</label><input asp-for="Formulario.CodigoPostal"
+                    class="form-control" /></div>
+            <div class="mb-2"><label class="form-label">Estado</label><input asp-for="Formulario.Estado"
+                    class="form-control" /></div>
+            <div class="mb-2"><label class="form-label">Municipio</label><input asp-for="Formulario.Municipio"
+                    class="form-control" /></div>
+            <div class="mb-2"><label class="form-label">Razón Social</label><input asp-for="Formulario.RazonSocial"
+                    class="form-control" /></div>
+            <div class="mb-2"><label class="form-label">Fecha</label><input asp-for="Formulario.Fecha"
+                    class="form-control" /></div>
         </div>
 
         <div class="col-md-6">
-            <div class="form-group">
-                <label asp-for="Formulario.Estado"></label>
-                <input asp-for="Formulario.Estado" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label asp-for="Formulario.Municipio"></label>
-                <input asp-for="Formulario.Municipio" class="form-control" />
+            <div class="mb-2"><label class="form-label">Área</label><input asp-for="Formulario.Area"
+                    class="form-control" /></div>
+            <div class="mb-2"><label class="form-label">Empresa</label><input asp-for="Formulario.Empresa"
+                    class="form-control" /></div>
+            <div class="mb-2"><label class="form-label">ISO</label><input asp-for="Formulario.ISO"
+                    class="form-control" /></div>
+            <div class="mb-2"><label class="form-label">NOM</label><input asp-for="Formulario.NOM"
+                    class="form-control" /></div>
+            <div class="mb-2"><label class="form-label">Contrato</label><input asp-for="Formulario.Contrato"
+                    class="form-control" /></div>
+            <div class="mb-2"><label class="form-label">Solicitud</label><input asp-for="Formulario.Solicitud"
+                    class="form-control" /></div>
+            <div class="mb-2"><label class="form-label">Requerimiento</label><input asp-for="Formulario.Requerimiento"
+                    class="form-control" /></div>
+            <div class="mb-2"><label class="form-label">Permiso</label><input asp-for="Formulario.Permiso"
+                    class="form-control" /></div>
+            <div class="mb-2"><label class="form-label">Petición</label><input asp-for="Formulario.Peticion"
+                    class="form-control" /></div>
+
+            <div class="mb-2"><label class="form-label">Regulación</label><input asp-for="Formulario.Regulacion"
+                    class="form-control" /></div>
+            <div class="mb-2"><label class="form-label">Ley</label><input asp-for="Formulario.Ley"
+                    class="form-control" /></div>
+            <div class="mb-2"><label class="form-label">Artículo</label><input asp-for="Formulario.Articulo"
+                    class="form-control" /></div>
+            <div class="mb-2"><label class="form-label">Párrafo</label><input asp-for="Formulario.Parrafo"
+                    class="form-control" /></div>
+
+            <div class="mb-2"><label class="form-label">Archivo</label><input asp-for="Formulario.ArchivoNombre"
+                    class="form-control" /></div>
+
+            <div class="mb-2">
+                <label class="form-label">Motivo de edición</label>
+                <textarea asp-for="MotivoPropuesta" class="form-control" rows="3"
+                    placeholder="Describe el motivo de los cambios"></textarea>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Formulario.Calle"></label>
-                <input asp-for="Formulario.Calle" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label asp-for="Formulario.Numero"></label>
-                <input asp-for="Formulario.Numero" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label asp-for="Formulario.RazonSocial"></label>
-                <input asp-for="Formulario.RazonSocial" class="form-control" />
+            <div class="mb-2">
+                <label class="form-label">Estado actual</label>
+                <input class="form-control" value="@Model.Formulario.EstadoRevision" disabled />
             </div>
         </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Guardar cambios</button>
-    <a asp-page="/Formularios/Index" class="btn btn-secondary">Cancelar</a>
+    <button type="submit" class="btn btn-primary mt-3">Enviar a aprobación</button>
+    <a asp-page="/Formularios/Index" class="btn btn-secondary mt-3">Cancelar</a>
 </form>
+
+@if (TempData["Mensaje"] != null)
+{
+    <div class="alert alert-info mt-3">@TempData["Mensaje"]</div>
+}

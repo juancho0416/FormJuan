@@ -5,6 +5,7 @@ using Microsoft.Data.Sqlite;
 using form.Models;
 using form.Services;
 using System;
+using System.Text.Json;
 
 namespace form.Pages
 {
@@ -110,13 +111,33 @@ namespace form.Pages
 
             var rows = updateCmd.ExecuteNonQuery();
 
-            // Auditoría: cambio de rol
+            // Auditoría: cambio de rol con Detalle en JSON (ANTES/DESPUÉS + contexto)
             var adminCorreo = HttpContext.Session.GetString("correo") ?? "admin";
+            var detalleJson = JsonSerializer.Serialize(new
+            {
+                Antes = new { Rol = rolActual, Correo = correoActual },
+                Despues = new { Rol = Usuario.Rol, Correo = correoActual },
+                QuienCambio = adminCorreo,
+                Ip = HttpContext.Connection.RemoteIpAddress?.ToString(),
+                FechaLocal = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+            });
+
             try
             {
-                _auditoria.Registrar(adminCorreo, "ACTUALIZAR_ROL", "Usuario", Usuario.Id);
+                // Nota: requiere que tu AuditoriaService tenga el parámetro `detalle`
+                _auditoria.Registrar(
+                    usuario: adminCorreo,
+                    accion: "ACTUALIZAR_ROL",
+                    entidad: "Usuario",
+                    entidadId: Usuario.Id,
+                    fecha: null,              // usa DateTime.Now por defecto
+                    detalle: detalleJson
+                );
             }
-            catch { /* no bloquear por auditoría */ }
+            catch
+            {
+                // no bloquear por auditoría
+            }
 
             Mensaje = rows > 0 ? "Rol actualizado correctamente." : "No se pudo actualizar el rol.";
             return RedirectToPage("/AdminPanel");

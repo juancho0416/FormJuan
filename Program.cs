@@ -9,6 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 // -------------------------
 // AppSettings (BaseUrl)
 // -------------------------
+
+// / Inyección de AuditoriaService(usa cadena de conexión de appsettings o fallback)
+var connString = builder.Configuration.GetConnectionString("Default") ?? "Data Source=usuarios.db";
+builder.Services.AddScoped<AuditoriaService>(_ => new AuditoriaService(connString));
+
 var appSettings = new AppSettings();
 builder.Configuration.GetSection("AppSettings").Bind(appSettings);
 // Normaliza: quita '/' final si viene
@@ -27,13 +32,17 @@ builder.Services.AddDistributedMemoryCache();
 // HttpClient general
 builder.Services.AddHttpClient();
 
-// Tu EmailService (deja SOLO una vida útil; aquí Scoped)
+// EmailService (deja SOLO una vida útil; aquí Scoped)
 builder.Services.AddScoped<EmailService>();
 
+///notificacion service
+builder.Services.AddScoped<NotificacionService>(_ =>
+    new NotificacionService(builder.Configuration.GetConnectionString("Default") ?? "Data Source=usuarios.db"));
+
 // Auditoría (tu clase actual) con conexión centralizada
-var cs = builder.Configuration.GetConnectionString("DefaultConnection")
-         ?? "Data Source=usuarios.db;Cache=Shared";
-builder.Services.AddScoped<AuditoriaService>(_ => new AuditoriaService(cs));
+// var cs = builder.Configuration.GetConnectionString("DefaultConnection")
+//          ?? "Data Source=usuarios.db;Cache=Shared";
+// builder.Services.AddScoped<AuditoriaService>(_ => new AuditoriaService(cs));
 
 // Resend SDK (DI oficial) - lee Resend:ApiKey
 builder.Services.AddOptions();
@@ -103,5 +112,6 @@ app.MapRazorPages();
 // app.MapHub<form.Hubs.NotificacionesHub>("/notificaciones");
 
 app.Run();
+
 
 

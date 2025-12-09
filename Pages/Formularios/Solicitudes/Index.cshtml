@@ -1,0 +1,72 @@
+@page
+@model form.Pages.Formularios.Solicitudes.IndexModel
+@{
+    ViewData["Title"] = "Solicitudes de edición";
+}
+
+<h2>Solicitudes de edición pendientes</h2>
+
+@if (!Model.Pendientes.Any())
+{
+    <div class="alert alert-info">No hay solicitudes pendientes.</div>
+}
+else
+{
+    <div class="list-group">
+        @foreach (var s in Model.Pendientes)
+        {
+            <div class="list-group-item">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <strong>Solicitud #@s.Id</strong> — Formulario: <code>@s.FormularioId</code><br />
+                        Propuesto por: <strong>@s.PropuestoPor</strong><br />
+                        Fecha: @s.FechaPropuesta<br />
+                        @if (!string.IsNullOrWhiteSpace(s.Motivo))
+                        {
+                            <div>Motivo: @s.Motivo</div>
+                        }
+                    </div>
+                    <div>
+                        <form method="post" asp-page-handler="Aprobar" asp-route-solicitudId="@s.Id" class="d-inline">
+                            <button type="submit" class="btn btn-success btn-sm">Aprobar</button>
+                        </form>
+                        <form method="post" asp-page-handler="Rechazar" asp-route-solicitudId="@s.Id" class="d-inline ms-2">
+                            <input type="text" name="motivoRechazo" class="form-control form-control-sm d-inline"
+                                placeholder="Motivo" style="width: 220px;" />
+                            <button type="submit" class="btn btn-danger btn-sm">Rechazar</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="mt-3">
+                    <table class="table table-sm table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Campo</th>
+                                <th>Antes</th>
+                                <th>Después</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var kv in s.Cambios)
+                            {
+                                var campo = kv.Key;
+                                var cambio = kv.Value;
+                                <tr>
+                                    <td><strong>@campo</strong></td>
+                                    <td>@cambio.Antes</td>
+                                    <td class="table-warning">@cambio.Despues</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@if (TempData["Mensaje"] != null)
+{
+    <div class="alert alert-info mt-3">@TempData["Mensaje"]</div>
+}

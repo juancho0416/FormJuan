@@ -2,10 +2,9 @@
 @model form.Pages.Auditoria.IndexModel
 
 <h2>Historial de Auditoría</h2>
+
 @if (HttpContext.Session.GetString("rol") == "Administrador")
 {
-
-
     <table class="table table-striped">
         <thead>
             <tr>
@@ -14,6 +13,7 @@
                 <th>Entidad</th>
                 <th>EntidadId</th>
                 <th>Fecha</th>
+                <th></th> <!-- Columna para acciones -->
             </tr>
         </thead>
         <tbody>
@@ -25,6 +25,12 @@
                     <td>@registro.Entidad</td>
                     <td>@registro.EntidadId</td>
                     <td>@registro.Fecha</td>
+                    <td>
+                        <!-- Botón para ver detalle -->
+                        <a asp-page="/Auditoria/Detalle" asp-route-id="@registro.Id" class="btn btn-sm btn-outline-primary">
+                            Ver
+                        </a>
+                    </td>
                 </tr>
             }
         </tbody>
@@ -33,9 +39,10 @@
 else
 {
     <div class="alert alert-danger">
-        No tienes permisos para acceder a esta pagina.
+        No tienes permisos para acceder a esta página.
     </div>
 }
+
 <div>
     <a asp-page="/Index" class="btn btn-danger">Volver</a>
 </div>

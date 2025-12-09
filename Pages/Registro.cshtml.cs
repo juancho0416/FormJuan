@@ -4,7 +4,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.Sqlite;
 using System.Security.Cryptography;
 using System.Text;
-using form.Services; // <-- importante: para usar tu AuditoriaService
+using form.Services;
+using System.Text.Json;
+
+// <-- importante
+// : para usar tu AuditoriaService
 
 namespace form.Pages
 {

@@ -1,0 +1,69 @@
+@page "{id:int}"
+@model form.Pages.Auditoria.DetalleModel
+
+@{
+    ViewData["Title"] = "Detalle de auditoría";
+}
+
+<h2>Detalle de auditoría</h2>
+
+<div class="mb-3">
+    <a class="btn btn-secondary" href="/Auditoriaportar JSON</a>
+    <button class=" btn btn-outline-dark" type="button"
+        onclick="navigator.clipboard.writeText(document.getElementById('jsonRaw').innerText)">Copiar</button>
+</div>
+
+@if (Model.Item == null)
+{
+    <div class="alert alert-warning">No se encontró el registro con Id=@Model.Id.</div>
+}
+else
+{
+    <div class="card mb-3">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Id</dt>
+                <dd class="col-sm-9">@Model.Item.Id</dd>
+
+                <dt class="col-sm-3">Usuario</dt>
+                <dd class="col-sm-9">@Model.Item.Usuario</dd>
+
+                <dt class="col-sm-3">Acción</dt>
+                <dd class="col-sm-9">@Model.Item.Accion</dd>
+
+                <dt class="col-sm-3">Entidad</dt>
+                <dd class="col-sm-9">@Model.Item.Entidad</dd>
+
+                <dt class="col-sm-3">EntidadId</dt>
+                <dd class="col-sm-9">@Model.Item.EntidadId</dd>
+
+                <dt class="col-sm-3">Fecha (guardada)</dt>
+                <dd class="col-sm-9">@Model.Item.Fecha</dd>
+
+                <dt class="col-sm-3">Fecha (CDMX)</dt>
+                <dd class="col-sm-9">@Model.FechaCdmx</dd>
+            </dl>
+        </div>
+    </div>
+
+    @if (!string.IsNullOrEmpty(Model.Item.Detalle))
+    {
+        <h4>Detalle</h4>
+        @* <p class="text-muted">Si es JSON, se muestra formateado.</p> *@
+
+        <div class="row">
+            <div class="col-md-6">
+                <h6>Formateado</h6>
+                <pre class="bg-light p-3 border rounded" style="white-space: pre-wrap;">@Model.DetalleBonito</pre>
+            </div>
+            <div class="col-md-6">
+                <h6>Raw</h6>
+                <pre id="jsonRaw" class="bg-light p-3 border rounded" style="white-space: pre-wrap;">@Model.Item.Detalle</pre>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">Este registro no tiene campo <code>Detalle</code> (opcional).</div>
+    }
+}

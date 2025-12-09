@@ -1,0 +1,44 @@
+@page
+@model form.Pages.Notificaciones.IndexModel
+@{
+    ViewData["Title"] = "Mis notificaciones";
+}
+
+<h2>Mis notificaciones <span class="badge bg-secondary">@Model.NotifCount</span></h2>
+
+@if (!Model.Items.Any())
+{
+    <div class="alert alert-info">No tienes notificaciones.</div>
+}
+else
+{
+    <div class="list-group">
+        @foreach (var n in Model.Items)
+        {
+            var css = n.Leida ? "" : "fw-bold";
+            <div class="list-group-item">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <div class="@css">@n.Titulo</div>
+                        <div class="text-muted small">@n.CreadaEn</div>
+                        <div>@n.Mensaje</div>
+                        @if (!string.IsNullOrWhiteSpace(n.Link))
+                        {
+                            <div class="mt-1">
+                                <a> @n.LinkIr</a>
+                            </div>
+                        }
+                    </div>
+                    <div>
+                        @if (!n.Leida)
+                        {
+                            <form method="post" asp-page-handler="Leer" asp-route-id="@n.Id">
+                                <button class="btn btn-sm btn-outline-primary">Marcar como leída</button>
+                            </form>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

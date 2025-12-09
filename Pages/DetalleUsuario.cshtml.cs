@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.Sqlite;
-
+using form.Services;
+using form.Models;
 namespace form.Pages
 {
     public class DetalleUsuarioModel : PageModel

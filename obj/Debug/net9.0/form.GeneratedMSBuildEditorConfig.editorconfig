@@ -24,6 +24,14 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5QYW5lbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/jmartinezg/OneDrive - Comisión Nacional de Energía/Escritorio/Nueva carpeta/FormJuan/Pages/Admin/Notificaciones/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTm90aWZpY2FjaW9uZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jmartinezg/OneDrive - Comisión Nacional de Energía/Escritorio/Nueva carpeta/FormJuan/Pages/Auditoria/Detalle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXVkaXRvcmlhXERldGFsbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/jmartinezg/OneDrive - Comisión Nacional de Energía/Escritorio/Nueva carpeta/FormJuan/Pages/Auditoria/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXVkaXRvcmlhXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -72,6 +80,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9ybXVsYXJpb3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/jmartinezg/OneDrive - Comisión Nacional de Energía/Escritorio/Nueva carpeta/FormJuan/Pages/Formularios/Solicitudes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9ybXVsYXJpb3NcU29saWNpdHVkZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/jmartinezg/OneDrive - Comisión Nacional de Energía/Escritorio/Nueva carpeta/FormJuan/Pages/Fourth.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm91cnRoLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -94,6 +106,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/jmartinezg/OneDrive - Comisión Nacional de Energía/Escritorio/Nueva carpeta/FormJuan/Pages/Menu.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVudS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jmartinezg/OneDrive - Comisión Nacional de Energía/Escritorio/Nueva carpeta/FormJuan/Pages/Notificaciones/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTm90aWZpY2FjaW9uZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/jmartinezg/OneDrive - Comisión Nacional de Energía/Escritorio/Nueva carpeta/FormJuan/Pages/Olvide.cshtml]

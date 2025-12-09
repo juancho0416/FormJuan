@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.Sqlite;
 using form.Models;
+using form.Services;
 using System.Collections.Generic;
 
-// evita la ambigüedad con el namespace form.Pages.Auditoria
 using AuditoriaModel = form.Models.Auditoria;
 
 namespace form.Pages.Auditoria
@@ -36,6 +36,7 @@ namespace form.Pages.Auditoria
                     Entidad = reader.GetString(3),
                     EntidadId = reader.GetInt32(4),
                     Fecha = reader.GetString(5)
+
                 });
             }
         }

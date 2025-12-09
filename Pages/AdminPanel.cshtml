@@ -1,11 +1,32 @@
 @page
 @model form.Pages.AdminPanelModel
 @{
+
     ViewData["Title"] = "Panel de Administración";
+}
+@using form.Services
+@inject NotificacionService NotifSvc
+@{
+    var correo = HttpContext.Session.GetString("correo");
+    var notifCount = (!string.IsNullOrWhiteSpace(correo))
+    ? NotifSvc.ContarNoLeidas(correo)
+    : 0;
+    <a class="icon-link position-relative" asp-page="/Formularios/Solicitudes/Index" title="Notificaciones"
+        aria-label="Notificaciones">
+        <span class="gobmxfont bi bi-bell" aria-hidden="true"></span>
+        @if (notifCount > 0)
+        {
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                @notifCount
+                <span class="visually-hidden">notificaciones sin leer</span>
+            </span>
+        }
+    </a>
 }
 
 <h2>Panel de Administración</h2>
 
+<a asp-page="/Formularios/Solicitudes/Index" class="nav-link">Aprobaciones</a>
 @if (TempData["StatusMessage"] is string msg && !string.IsNullOrWhiteSpace(msg))
 {
     <div class="alert alert-info">@msg</div>
@@ -40,6 +61,7 @@
                     <td>
                         <a asp-page="/EditarUsuario" asp-route-id="@u.Id" class="btn btn-primary btn-sm">Editar</a>
                         <a asp-page="/DetalleUsuario" asp-route-id="@u.Id" class="btn btn-primary btn-sm">Ver</a>
+
 
                         @if (esAdmin || esMismo)
                         {
